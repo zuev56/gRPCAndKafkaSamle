@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>dotnet-Consumer1.Service-877cd56e-92fe-4f22-b2e6-4d59308676d8</UserSecretsId>
+        <RootNamespace>Consumer1.Service</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Consumer.Shared\Consumer.Shared.csproj" />
+    </ItemGroup>
+</Project>

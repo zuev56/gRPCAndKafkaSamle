@@ -1,0 +1,21 @@
+@Producer.WebApi_HostAddress = http://localhost:5205
+
+POST {{Producer.WebApi_HostAddress}}/placeorder/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "UserId": "zuev56",
+  "Total": 3,
+  "Items": [
+    {
+      "ProductId": "one",
+      "Quantity": 2
+    },
+    {
+      "ProductId": "two",
+      "Quantity": 5
+    }
+  ]
+}
+###
