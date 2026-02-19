@@ -17,8 +17,8 @@ public abstract class Worker : BackgroundService
 
     protected Worker(IOptions<KafkaSettings> kafkaSettings, ILogger<Worker> logger)
     {
-        _logger = logger;
         _kafkaSettings = kafkaSettings.Value;
+        _logger = logger;
     }
 
     public override Task StartAsync(CancellationToken cancellationToken)

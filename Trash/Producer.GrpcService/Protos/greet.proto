@@ -1,0 +1,25 @@
+syntax = "proto3";                                     // Тип сипользуемого синтаксиса.
+
+import "google/protobuf/wrappers.proto";               // Для работы с Nullable типами
+
+option csharp_namespace = "Producer.GrpcService";      // Пространство имён, которое будет использоваться с этим сервисом.
+
+package greet;                                         // Название пакета. Позволяет разрешать конфликтф имён при наличии сущностей с одинаковыми именами.
+
+// The greeting service definition.
+service Greeter {                                      // Определение сервиса
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply);
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings.
+message HelloReply {
+  string message = 1;
+}
+
+// https://metanit.com/sharp/grpc/2.2.php

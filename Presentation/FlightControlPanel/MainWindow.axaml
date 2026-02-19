@@ -1,0 +1,62 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:FlightControlPanel"
+        xmlns:lvc="clr-namespace:LiveChartsCore.SkiaSharpView.Avalonia;assembly=LiveChartsCore.SkiaSharpView.Avalonia"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="FlightControlPanel.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Height="600"
+        Width="900"
+        Title="FlightControlPanel">
+
+    <Window.DataContext>
+            <vm:MainWindowViewModel/>
+    </Window.DataContext>
+
+    <Grid RowDefinitions="*,Auto" RowSpacing="5" Margin="10">
+        <lvc:CartesianChart Grid.Row="0" TooltipPosition="Hidden">
+            <lvc:CartesianChart.Series>
+                <lvc:XamlRowSeries
+                    Values="{Binding UnitInfos}"
+                    DataLabelsFormatter="{Binding LabelsFormatter}"
+                    ShowDataLabels="True"
+                    DataLabelsPosition="End"
+                    DataLabelsTranslate="{lvc:Point '-1,0'}"
+                    MaxBarWidth="50"
+                    Padding="10"/>
+            </lvc:CartesianChart.Series>
+
+            <lvc:CartesianChart.XAxes>
+                <lvc:XamlAxis SeparatorsPaint="{lvc:SolidColorPaint Color='#DCDCDC'}"/>
+            </lvc:CartesianChart.XAxes>
+
+            <lvc:CartesianChart.YAxes>
+                <lvc:XamlAxis IsVisible="False"/>
+            </lvc:CartesianChart.YAxes>
+        </lvc:CartesianChart>
+
+        <StackPanel Grid.Row="1" Spacing="5" >
+            <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="5" Padding="3">
+                <Grid ColumnDefinitions="160,*">
+                    <TextBlock Grid.Column="0" Text="Генератор данных" VerticalAlignment="Center" Margin="10,0"/>
+                    <StackPanel Grid.Column="1" Spacing="5" Orientation="Horizontal">
+                        <Button Content="Запустить" Command="{Binding StartCoordGeneratorCommand}"/>
+                        <Button Content="Остановить" Command="{Binding StopCoordGeneratorCommand}"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+            <Border BorderBrush="LightGray" BorderThickness="1" CornerRadius="5" Padding="3">
+                <Grid ColumnDefinitions="160,*">
+                    <TextBlock Grid.Column="0" Text="Диспетчер полётов" VerticalAlignment="Center" Margin="10,0"/>
+                    <StackPanel Grid.Column="1" Spacing="5" Orientation="Horizontal">
+                        <Button Content="Запустить" Command="{Binding StartFlightControllerCommand}"/>
+                        <Button Content="Остановить" Command="{Binding StopFlightControllerCommand}"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </StackPanel>
+
+    </Grid>
+</Window>

@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "FlightControlPanel";
+
+package unit;
+
+service UnitInfo {
+  rpc Provide (google.protobuf.Empty) returns (UnitInfoResponse);
+}
+
+message UnitInfoResponse {
+  repeated UnitInfoItem items = 1;
+}
+
+message UnitInfoItem {
+  int32 id = 1;
+  string name = 2;
+  double x = 3;
+  double y = 4;
+  google.protobuf.Timestamp date = 5;
+}
